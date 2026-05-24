@@ -11,32 +11,36 @@ const pizzas = [
     price: "$9.990",
     ingredients: "Pomodoro Mutti · Mozzarella Fior di Latte · Albahaca fresca",
     extra: "→ Agrega Pesto artesanal por $1.000 adicional",
-    badge: "Clásica italiana",
-    image: "/images/pizza-margherita.jpg"
+    badge: "🇮🇹 La clásica",
+    image: "/images/pizza-margherita.jpg",
+    alt: "Pizza Margherita artesanal con tomate Mutti y mozzarella Fior di Latte - Domus Pizzería Requinoa"
   },
   {
     id: "pepperoni",
     name: "Pepperoni",
     price: "$11.990",
     ingredients: "Pomodoro Mutti · Mozzarella Fior di Latte · Pepperoni selecto",
-    badge: "La más pedida",
-    image: "/images/pizza-pepperoni.jpg"
+    badge: "⭐ La más pedida",
+    image: "/images/pizza-pepperoni.jpg",
+    alt: "Pizza Pepperoni artesanal horno barro - Domus Pizzería Requinoa delivery"
   },
   {
     id: "napolitana",
     name: "Napolitana",
     price: "$10.990",
     ingredients: "Pomodoro Mutti · Mozzarella Fior di Latte · Orégano · Tomate fresco en cubitos",
-    badge: "Receta original",
-    image: "/images/pizza-napolitana.jpg"
+    badge: "🔥 Receta original",
+    image: "/images/pizza-napolitana.jpg",
+    alt: "Pizza Napolitana artesanal masa fermentada 48 horas - Domus Pizzería Requinoa"
   },
   {
     id: "veggie",
     name: "Veggie",
     price: "$10.990",
     ingredients: "Pomodoro Mutti · Mozzarella Fior di Latte · Champiñón · Pimentón verde · Cebolla",
-    badge: "Favorita vegetariana",
-    image: "/images/pizza-veggie.jpg"
+    badge: "🌿 Favorita vegetariana",
+    image: "/images/pizza-veggie.jpg",
+    alt: "Pizza Veggie artesanal con champiñones y pimentón - Domus Pizzería Requinoa"
   }
 ];
 ---
@@ -75,24 +79,26 @@ const pizzas = [
             
             <img
               src={pizza.image}
-              alt={`Pizza ${pizza.name} artesanal`}
+              alt={pizza.alt}
               class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
               width="300"
               height="300"
             />
-            
-            <!-- Badge overlay inside image -->
-            {pizza.badge && (
-              <span class="absolute top-3 left-3 bg-accent text-[#0F0E0C] font-sans text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded">
-                {pizza.badge}
-              </span>
-            )}
           </div>
 
           <!-- Pizza Details Column -->
           <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between">
             <div>
+              <!-- Pizza Badge (Visible above the name, using --color-accent bg and dark text) -->
+              {pizza.badge && (
+                <div class="mb-2">
+                  <span class="inline-block bg-accent text-[#0F0E0C] font-sans text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded">
+                    {pizza.badge}
+                  </span>
+                </div>
+              )}
+
               <div class="flex items-baseline justify-between gap-4 mb-2">
                 <h3 class="font-serif text-xl sm:text-2xl font-bold text-cream group-hover:text-accent transition-colors duration-300">
                   {pizza.name}
@@ -147,3 +153,4 @@ const pizzas = [
 
   </div>
 </section>
+
