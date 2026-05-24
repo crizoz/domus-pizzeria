@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Domus Pizzería | Pizza Artesanal en Requinoa - Delivery y Retiro",
+  description = "La mejor pizza artesanal de Requinoa. Masa fermentada 48 horas, horno de barro, ingredientes italianos. Margherita, Pepperoni, Napolitana y más. Delivery y retiro Viernes a Domingo."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Básico -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="pizza Requinoa, pizzería Requinoa, delivery Requinoa, pizza artesanal O'Higgins, pizza horno barro Requinoa" />
+    <link rel="canonical" href="https://domuspizzeria.cl" />
+    
+    <!-- Favicon & PWA Icons -->
+    <link rel="icon" type="image/png" href="/squarelogo.png" />
+    <link rel="apple-touch-icon" href="/squarelogo.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#E8882A" />
+
+    <!-- Preconnects para optimizar carga de fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Open Graph para compartir en redes (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:title" content="Domus Pizzería | Pizza Artesanal en Requinoa" />
+    <meta property="og:description" content="Pizza artesanal con masa fermentada 48h y horno de barro. Delivery en Requinoa Viernes a Domingo." />
+    <meta property="og:image" content="/images/og-image.jpg" />
+    <meta property="og:url" content="https://domuspizzeria.cl" />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:locale" content="es_CL" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Domus Pizzería | Pizza Artesanal en Requinoa" />
+    <meta name="twitter:description" content="Pizza artesanal con masa fermentada 48h y horno de barro. Delivery en Requinoa Viernes a Domingo." />
+    <meta name="twitter:image" content="/images/og-image.jpg" />
+
+    <!-- Schema.org JSON-LD (LocalBusiness + Restaurant) -->
+    <script type="application/ld+json" is:inline>
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Domus Pizzería",
+        "description": "Pizzería artesanal en Requinoa con masa fermentada 48 horas, horno de barro y ingredientes italianos importados.",
+        "url": "https://domuspizzeria.cl",
+        "telephone": "+56900000000",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Oscar Castro 29",
+          "addressLocality": "Requinoa",
+          "addressRegion": "O'Higgins",
+          "addressCountry": "CL"
+        },
+        "openingHours": ["Fr 19:00-23:00", "Sa 19:00-23:00", "Su 19:00-23:00"],
+        "servesCuisine": "Pizza italiana artesanal",
+        "priceRange": "$$",
+        "hasMenu": "https://domuspizzeria.cl/#menu",
+        "image": "https://domuspizzeria.cl/images/og-image.jpg"
+      }
+    </script>
+  </head>
+  <body class="bg-bg text-cream selection:bg-accent selection:text-bg overflow-x-hidden">
+    <slot />
+  </body>
+</html>

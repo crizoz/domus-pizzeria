@@ -1,0 +1,18 @@
+{
+  "name": "Domus Pizzería",
+  "short_name": "Domus",
+  "description": "La mejor pizza artesanal de Requinoa. Masa fermentada 48 horas, horno de barro y ingredientes italianos.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F0E0C",
+  "theme_color": "#E8882A",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/squarelogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+---
+// Proceso.astro
+const pasos = [
+  {
+    num: "1",
+    emoji: "🌾",
+    title: "La masa",
+    description: "Harina seleccionada, levadura natural, agua y tiempo. 48 horas de fermentación lenta en frío."
+  },
+  {
+    num: "2",
+    emoji: "🍅",
+    title: "La salsa",
+    description: "Tomate Mutti San Marzano triturado. Sin cocción, sin aditivos. Italia en cada mordida."
+  },
+  {
+    num: "3",
+    emoji: "🔥",
+    title: "El horno",
+    description: "450°C en nuestro horno de barro artesanal. Tu pizza lista en 90 segundos perfectos."
+  },
+  {
+    num: "4",
+    emoji: "🍕",
+    title: "Tu pizza",
+    description: "Sale del horno directo a tu puerta. Delivery en Requinoa o retiro en Oscar Castro 29."
+  }
+];
+---
+
+<section id="proceso" class="relative py-24 bg-surface bg-noise border-y border-border overflow-hidden">
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-accent font-sans text-xs sm:text-sm font-semibold uppercase tracking-widest block mb-3">El Arte del Proceso</span>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-cream mb-4">
+        Así Hacemos tu Pizza
+      </h2>
+      <div class="h-0.5 w-16 bg-accent mx-auto mb-6"></div>
+      <p class="font-sans text-cream-muted text-base sm:text-lg">
+        En Domus, creemos que la paciencia es el ingrediente secreto. Sin apurar los tiempos, cocinamos con pasión y respeto.
+      </p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Timeline Left Column (8 cols on desktop) -->
+      <div class="lg:col-span-7 flex flex-col justify-center">
+        <!-- Vertical/Horizontal Connector Path container -->
+        <div class="relative flex flex-col md:flex-row lg:flex-col gap-8">
+          
+          <!-- Decorative connecting line (for desktop row / mobile vertical) -->
+          <div class="hidden md:block lg:hidden absolute top-[30px] left-0 right-0 h-0.5 bg-border z-0"></div>
+          <div class="block md:hidden lg:block absolute left-[28px] top-0 bottom-0 w-0.5 bg-border z-0"></div>
+
+          {pasos.map((paso, idx) => (
+            <div class="relative z-10 flex flex-row md:flex-col lg:flex-row gap-6 md:gap-4 lg:gap-6 items-start md:items-center lg:items-start flex-1 group">
+              
+              <!-- Indicator Step Number Bubble -->
+              <div class="flex-shrink-0 w-14 h-14 rounded-full bg-bg border border-border flex items-center justify-center text-accent font-serif text-xl font-bold transition-all duration-300 group-hover:border-accent/40 group-hover:bg-surface group-hover:scale-105 shadow-md shadow-black/10">
+                <span class="absolute text-[10px] -top-1.5 -right-1 bg-surface px-1.5 py-0.5 border border-border text-cream-muted rounded-full font-sans font-normal">
+                  Paso {paso.num}
+                </span>
+                {paso.emoji}
+              </div>
+
+              <!-- Step Text Details -->
+              <div class="flex-1 md:text-center lg:text-left pt-2 md:pt-4 lg:pt-2">
+                <h3 class="font-serif text-lg sm:text-xl font-bold text-cream mb-2 transition-colors duration-300 group-hover:text-accent">
+                  {paso.title}
+                </h3>
+                <p class="font-sans text-cream-muted text-xs sm:text-sm leading-relaxed max-w-sm md:mx-auto lg:mx-0">
+                  {paso.description}
+                </p>
+              </div>
+
+            </div>
+          ))}
+
+        </div>
+      </div>
+
+      <!-- Process Image Right Column (5 cols on desktop) -->
+      <div class="lg:col-span-5">
+        <div class="relative bg-bg-alt border border-border p-3 rounded-lg shadow-2xl shadow-black/35 group max-w-md mx-auto">
+          <!-- Image Container with Aspect Ratio -->
+          <div class="relative w-full aspect-[4/5] bg-surface rounded overflow-hidden flex items-center justify-center">
+            
+            <!-- Fallback text while image loads -->
+            <div class="absolute inset-0 bg-surface flex items-center justify-center p-6 text-center">
+              <span class="text-xs font-sans text-cream-muted tracking-widest uppercase">
+                Proceso en Cocina · Horno de Barro
+              </span>
+            </div>
+
+            <img
+              src="/images/proceso-cocina.jpg"
+              alt="Cocinando pizza en un horno artesanal de leña y barro"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+              width="450"
+              height="562"
+            />
+            
+            <!-- Premium overlay border -->
+            <div class="absolute inset-0 border border-white/5 rounded pointer-events-none"></div>
+          </div>
+          
+          <!-- Photo Label -->
+          <div class="mt-4 px-2 flex justify-between items-center text-xs font-sans text-cream-muted tracking-wide">
+            <span>Dark Kitchen · Requinoa</span>
+            <span class="text-accent/60">● 450°C</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

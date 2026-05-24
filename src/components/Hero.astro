@@ -1,0 +1,140 @@
+---
+// Hero.astro
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || "56900000000";
+const message = encodeURIComponent("Hola Domus! Quiero hacer un pedido 🍕");
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+---
+
+<section class="relative h-screen w-full flex items-center justify-center overflow-hidden bg-bg">
+  <!-- Background Image with Lazy Loading fallback/color block -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="/images/hero-pizza-horno.jpg"
+      alt="Pizza artesanal saliendo de un horno de barro a las brasas"
+      class="w-full h-full object-cover object-center opacity-60 scale-100 transition-transform duration-[10000ms] hover:scale-105"
+      width="1920"
+      height="1080"
+    />
+    <!-- Rich dark gradient overlay: negro 0% arriba -> 80% abajo, blending to carbon -->
+    <div class="absolute inset-0 bg-gradient-to-t from-bg via-bg/40 to-transparent"></div>
+    <div class="absolute inset-0 bg-black/30"></div>
+  </div>
+
+  <!-- Content Container -->
+  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center justify-center h-full">
+    
+    <!-- Floating operational badge -->
+    <div 
+      class="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface/80 border border-border text-cream-muted font-sans text-xs sm:text-sm tracking-wider uppercase backdrop-blur-sm animate-fade-in"
+    >
+      <span class="w-2 h-2 rounded-full bg-accent animate-ping"></span>
+      Abrimos Viernes · Sábado · Domingo
+    </div>
+
+    <!-- Pizzería Logo Placeholder / Existing Logo -->
+    <div class="mb-4 max-w-[280px] sm:max-w-[340px] animate-fade-in-up">
+      <img
+        src="/logodomus.png"
+        alt="Domus Pizzería"
+        class="w-full h-auto drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
+        width="400"
+        height="120"
+      />
+    </div>
+
+    <!-- Main Headline -->
+    <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-cream mb-6 max-w-3xl leading-[1.1] sm:leading-[1.1] animate-fade-in-up delay-200">
+      La pizza que <span class="text-accent">Requinoa</span> estaba esperando
+    </h1>
+
+    <!-- Subheadline -->
+    <p class="font-sans text-base sm:text-lg md:text-xl text-cream-muted max-w-2xl mb-8 tracking-wide leading-relaxed animate-fade-in-up delay-300">
+      Masa fermentada 48 horas <span class="text-accent/60">·</span> Horno de barro <span class="text-accent/60">·</span> Ingredientes italianos
+    </p>
+
+    <!-- WhatsApp Main CTA Button -->
+    <div class="animate-fade-in-up delay-400">
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group relative inline-flex items-center justify-center gap-3 bg-accent text-[#0F0E0C] hover:bg-accent-hover font-sans font-bold text-base sm:text-lg px-8 py-4 rounded-md shadow-lg shadow-accent/15 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-accent/25 active:translate-y-0"
+      >
+        <span>Pedir ahora por WhatsApp</span>
+        <svg 
+          class="w-5 h-5 transition-transform duration-300 transform group-hover:translate-x-1" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          stroke-width="2.5" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"
+        >
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center gap-2">
+    <a 
+      href="#por-que-domus" 
+      class="text-cream-muted hover:text-accent transition-colors duration-300 flex flex-col items-center gap-1 group"
+      aria-label="Desplazarse hacia abajo"
+    >
+      <span class="text-xs uppercase tracking-widest font-sans opacity-50 group-hover:opacity-100 transition-opacity duration-300">Descubre Domus</span>
+      <svg
+        class="w-6 h-6 animate-bounce"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+      </svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out both;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 400ms;
+  }
+  .delay-400 {
+    animation-delay: 600ms;
+  }
+</style>

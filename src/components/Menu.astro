@@ -1,0 +1,149 @@
+---
+// Menu.astro
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || "56900000000";
+const message = encodeURIComponent("Hola Domus! Quiero hacer un pedido 🍕");
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+const pizzas = [
+  {
+    id: "margherita",
+    name: "Margherita",
+    price: "$9.990",
+    ingredients: "Pomodoro Mutti · Mozzarella Fior di Latte · Albahaca fresca",
+    extra: "→ Agrega Pesto artesanal por $1.000 adicional",
+    badge: "Clásica italiana",
+    image: "/images/pizza-margherita.jpg"
+  },
+  {
+    id: "pepperoni",
+    name: "Pepperoni",
+    price: "$11.990",
+    ingredients: "Pomodoro Mutti · Mozzarella Fior di Latte · Pepperoni selecto",
+    badge: "La más pedida",
+    image: "/images/pizza-pepperoni.jpg"
+  },
+  {
+    id: "napolitana",
+    name: "Napolitana",
+    price: "$10.990",
+    ingredients: "Pomodoro Mutti · Mozzarella Fior di Latte · Orégano · Tomate fresco en cubitos",
+    badge: "Receta original",
+    image: "/images/pizza-napolitana.jpg"
+  },
+  {
+    id: "veggie",
+    name: "Veggie",
+    price: "$10.990",
+    ingredients: "Pomodoro Mutti · Mozzarella Fior di Latte · Champiñón · Pimentón verde · Cebolla",
+    badge: "Favorita vegetariana",
+    image: "/images/pizza-veggie.jpg"
+  }
+];
+---
+
+<section id="menu" class="relative py-24 bg-bg overflow-hidden">
+  <!-- Soft background glows -->
+  <div class="absolute top-1/2 left-10 w-80 h-80 rounded-full bg-accent/3 blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-gold/3 blur-3xl pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-accent font-sans text-xs sm:text-sm font-semibold uppercase tracking-widest block mb-3">Nuestra Carta</span>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-cream mb-4">
+        Pizzas de Autor
+      </h2>
+      <div class="h-0.5 w-16 bg-accent mx-auto mb-6"></div>
+      <p class="font-sans text-cream-muted text-base sm:text-lg italic">
+        Masa artesanal fermentada 48 horas · Horneadas en barro
+      </p>
+    </div>
+
+    <!-- Pizza Cards Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+      {pizzas.map((pizza) => (
+        <div class="flex flex-col sm:flex-row bg-bg-alt border border-border rounded-lg overflow-hidden group hover:border-accent/30 hover:shadow-xl hover:shadow-black/20 transition-all duration-300">
+          
+          <!-- Pizza Image Column -->
+          <div class="relative w-full sm:w-2/5 aspect-[4/3] sm:aspect-auto min-h-[160px] bg-surface flex items-center justify-center overflow-hidden">
+            <!-- Fallback design / placeholder while loading -->
+            <div class="absolute inset-0 bg-surface flex items-center justify-center text-center p-4">
+              <span class="text-xs font-sans text-cream-muted tracking-widest uppercase">
+                {pizza.name}
+              </span>
+            </div>
+            
+            <img
+              src={pizza.image}
+              alt={`Pizza ${pizza.name} artesanal`}
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              width="300"
+              height="300"
+            />
+            
+            <!-- Badge overlay inside image -->
+            {pizza.badge && (
+              <span class="absolute top-3 left-3 bg-accent text-[#0F0E0C] font-sans text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded">
+                {pizza.badge}
+              </span>
+            )}
+          </div>
+
+          <!-- Pizza Details Column -->
+          <div class="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+            <div>
+              <div class="flex items-baseline justify-between gap-4 mb-2">
+                <h3 class="font-serif text-xl sm:text-2xl font-bold text-cream group-hover:text-accent transition-colors duration-300">
+                  {pizza.name}
+                </h3>
+                <span class="font-sans font-bold text-lg sm:text-xl text-gold whitespace-nowrap">
+                  {pizza.price}
+                </span>
+              </div>
+              
+              <p class="font-sans text-cream-muted text-xs sm:text-sm leading-relaxed mb-4">
+                {pizza.ingredients}
+              </p>
+            </div>
+
+            <!-- Optional Extra details -->
+            {pizza.extra ? (
+              <div class="mt-auto pt-3 border-t border-border/50">
+                <p class="font-sans text-[11px] sm:text-xs text-accent italic">
+                  {pizza.extra}
+                </p>
+              </div>
+            ) : (
+              <div class="h-4"></div>
+            )}
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+    <!-- WhatsApp CTA below Menu -->
+    <div class="text-center">
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-3 bg-accent text-[#0F0E0C] hover:bg-accent-hover font-sans font-bold text-base sm:text-lg px-8 py-4 rounded-md shadow-lg shadow-accent/15 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-accent/25 active:translate-y-0"
+      >
+        <span>Hacer mi pedido por WhatsApp 🍕</span>
+        <svg 
+          class="w-5 h-5 fill-current" 
+          viewBox="0 0 24 24" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.403.002 9.803-4.394 9.806-9.802.001-2.618-1.01-5.082-2.86-6.93C16.37 2.025 13.91 1.012 11.9 1.012c-5.41 0-9.813 4.404-9.816 9.813-.001 1.714.453 3.393 1.317 4.887L2.39 20.21l4.257-1.056zM17.75 14.93c-.314-.157-1.86-.92-2.15-1.025-.29-.105-.5-.157-.71.157-.21.314-.81.103-1.02-.103-.21-.21-.795-.293-1.51-.933-.556-.496-.93-1.11-.104-1.267.086-.157.314-.366.42-.523.104-.157.156-.262.262-.47.105-.21.052-.393-.026-.55-.079-.157-.71-1.71-.973-2.34-.256-.617-.518-.533-.71-.543-.183-.009-.393-.01-.602-.01-.21 0-.55.079-.838.393-.29.314-1.1.107-1.1 2.7 0 .26.05.51.10.76.36 1.48 1.63 2.87 2.94 3.61l.5.28c.45.24.93.36 1.42.36.43 0 .86-.09 1.25-.26.96-.42 1.58-1.1 1.79-1.63.21-.52.21-1 .15-1.1-.06-.1-.26-.15-.57-.31z" />
+        </svg>
+      </a>
+      <p class="font-sans text-[11px] sm:text-xs text-cream-muted mt-3">
+        Delivery en Requinoa o retiro en Oscar Castro 29
+      </p>
+    </div>
+
+  </div>
+</section>

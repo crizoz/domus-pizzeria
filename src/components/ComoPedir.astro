@@ -1,0 +1,90 @@
+---
+// ComoPedir.astro
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || "56900000000";
+const message = encodeURIComponent("Hola Domus! Quiero hacer un pedido 🍕");
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+const pasos = [
+  {
+    num: "01",
+    title: "Elige tu pizza",
+    desc: "Revisa nuestra carta y elige lo que se te antoje"
+  },
+  {
+    num: "02",
+    title: "Escríbenos",
+    desc: "Mándanos tu pedido por WhatsApp con tu dirección o indica que vas a retirar"
+  },
+  {
+    num: "03",
+    title: "Lo recibes",
+    desc: "Delivery a Requinoa o retiro en Oscar Castro 29"
+  }
+];
+---
+
+<section id="como-pedir" class="relative py-24 bg-surface bg-noise border-t border-border overflow-hidden">
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <span class="text-accent font-sans text-xs sm:text-sm font-semibold uppercase tracking-widest block mb-3">Paso a Paso</span>
+      <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-cream mb-4">
+        Pedir es Simple
+      </h2>
+      <div class="h-0.5 w-16 bg-accent mx-auto mb-6"></div>
+      <p class="font-sans text-cream-muted text-base sm:text-lg">
+        Sin fricciones ni registros complejos. Chatea directamente con nuestro equipo y ten tu pizza lista en minutos.
+      </p>
+    </div>
+
+    <!-- Steps Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-16">
+      {pasos.map((paso) => (
+        <div class="relative bg-bg border border-border p-8 rounded-lg overflow-hidden group hover:border-accent/30 transition-all duration-300">
+          <!-- Giant Background Number -->
+          <div class="absolute -right-4 -bottom-6 font-serif text-8xl font-black text-border/40 select-none group-hover:text-accent/5 transition-colors duration-300">
+            {paso.num}
+          </div>
+
+          <!-- Step Bubble Indicator -->
+          <div class="w-10 h-10 rounded-full bg-accent text-[#0F0E0C] font-sans font-bold flex items-center justify-center mb-6">
+            {paso.num}
+          </div>
+
+          <!-- Title & Desc -->
+          <h3 class="font-serif text-xl font-bold text-cream mb-3 relative z-10">
+            {paso.title}
+          </h3>
+          <p class="font-sans text-cream-muted text-sm sm:text-base leading-relaxed relative z-10">
+            {paso.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA & Footer notes -->
+    <div class="text-center flex flex-col items-center justify-center">
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-3 bg-accent text-[#0F0E0C] hover:bg-accent-hover font-sans font-bold text-lg px-10 py-5 rounded-md shadow-xl shadow-accent/15 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-accent/25 active:translate-y-0"
+        id="final-whatsapp-btn"
+      >
+        <span>Abrir WhatsApp y pedir 🍕</span>
+        <svg 
+          class="w-6 h-6 fill-current" 
+          viewBox="0 0 24 24" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.403.002 9.803-4.394 9.806-9.802.001-2.618-1.01-5.082-2.86-6.93C16.37 2.025 13.91 1.012 11.9 1.012c-5.41 0-9.813 4.404-9.816 9.813-.001 1.714.453 3.393 1.317 4.887L2.39 20.21l4.257-1.056zM17.75 14.93c-.314-.157-1.86-.92-2.15-1.025-.29-.105-.5-.157-.71.157-.21.314-.81.103-1.02-.103-.21-.21-.795-.293-1.51-.933-.556-.496-.93-1.11-.104-1.267.086-.157.314-.366.42-.523.104-.157.156-.262.262-.47.105-.21.052-.393-.026-.55-.079-.157-.71-1.71-.973-2.34-.256-.617-.518-.533-.71-.543-.183-.009-.393-.01-.602-.01-.21 0-.55.079-.838.393-.29.314-1.1.107-1.1 2.7 0 .26.05.51.10.76.36 1.48 1.63 2.87 2.94 3.61l.5.28c.45.24.93.36 1.42.36.43 0 .86-.09 1.25-.26.96-.42 1.58-1.1 1.79-1.63.21-.52.21-1 .15-1.1-.06-.1-.26-.15-.57-.31z" />
+        </svg>
+      </a>
+      <p class="font-sans text-xs sm:text-sm text-accent tracking-wide mt-6 font-semibold uppercase">
+        Atendemos Viernes, Sábados y Domingos · Delivery y retiro en local
+      </p>
+    </div>
+
+  </div>
+</section>

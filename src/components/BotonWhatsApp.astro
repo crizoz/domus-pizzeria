@@ -1,0 +1,37 @@
+---
+// BotonWhatsApp flotante para mobile (esquina inferior derecha)
+const whatsappNumber = import.meta.env.PUBLIC_WHATSAPP_NUMBER || "56900000000";
+const message = encodeURIComponent("Hola Domus! Quiero hacer un pedido 🍕");
+const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+---
+
+<a
+  href={whatsappUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="md:hidden fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25D366] text-[#0F0E0C] hover:bg-[#20ba5a] font-sans font-bold px-5 py-3.5 rounded-full shadow-xl shadow-[#25D366]/20 transition-all duration-300 hover:scale-110 active:scale-95 animate-pulse-slow"
+  id="floating-whatsapp-btn"
+  aria-label="Pedir ahora por WhatsApp"
+>
+  <svg class="w-6 h-6 fill-[#0F0E0C]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.451 5.403.002 9.803-4.394 9.806-9.802.001-2.618-1.01-5.082-2.86-6.93C16.37 2.025 13.91 1.012 11.9 1.012c-5.41 0-9.813 4.404-9.816 9.813-.001 1.714.453 3.393 1.317 4.887L2.39 20.21l4.257-1.056zM17.75 14.93c-.314-.157-1.86-.92-2.15-1.025-.29-.105-.5-.157-.71.157-.21.314-.81.103-1.02-.103-.21-.21-.795-.293-1.51-.933-.556-.496-.93-1.11-.104-1.267.086-.157.314-.366.42-.523.104-.157.156-.262.262-.47.105-.21.052-.393-.026-.55-.079-.157-.71-1.71-.973-2.34-.256-.617-.518-.533-.71-.543-.183-.009-.393-.01-.602-.01-.21 0-.55.079-.838.393-.29.314-1.1.107-1.1 2.7 0 .26.05.51.10.76.36 1.48 1.63 2.87 2.94 3.61l.5.28c.45.24.93.36 1.42.36.43 0 .86-.09 1.25-.26.96-.42 1.58-1.1 1.79-1.63.21-.52.21-1 .15-1.1-.06-.1-.26-.15-.57-.31z" />
+  </svg>
+  <span class="tracking-wide">Pedir ahora</span>
+</a>
+
+<style>
+  @keyframes pulseSlow {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 10px 15px -3px rgba(37, 211, 102, 0.2), 0 4px 6px -2px rgba(37, 211, 102, 0.1);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 20px 25px -5px rgba(37, 211, 102, 0.4), 0 10px 10px -5px rgba(37, 211, 102, 0.2);
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulseSlow 2.5s infinite ease-in-out;
+  }
+</style>

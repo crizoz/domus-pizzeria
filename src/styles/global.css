@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+@import "tailwindcss";
+
+
+@theme {
+  --color-bg:        #0F0E0C;  /* carbón oscuro, casi negro */
+  --color-bg-alt:    #1A1815;  /* superficies secundarias */
+  --color-surface:   #242018;  /* cards, secciones alternadas */
+  --color-accent:    #E8882A;  /* naranja ámbar — CTA principal */
+  --color-accent-hover: #F09840;
+  --color-cream:     #F5EDD8;  /* crema — texto principal */
+  --color-cream-muted: #B8A98A; /* texto secundario/muted */
+  --color-border:    #2E2A24;  /* bordes sutiles */
+  --color-gold:      #C8943A;  /* detalles dorados, precios */
+
+  --font-serif: "Playfair Display", serif;
+  --font-sans: Inter, sans-serif;
+}
+
+@utility bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-bg);
+    color: var(--color-cream);
+    font-family: Inter, sans-serif;
+  }
+  
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-cream);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display", serif;
+    color: var(--color-cream);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Focus outline helper */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
