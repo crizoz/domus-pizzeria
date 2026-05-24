@@ -153,10 +153,10 @@ El sitio cuenta con las siguientes pizzas de autor en su menú inicial interacti
 
 | Pizza | Ingredientes | Precio | Especialidad |
 | :--- | :--- | :--- | :--- |
-| **Margherita** | Pomodoro Mutti, Mozzarella Fior di Latte, Albahaca fresca | `$9.990` | Clásica italiana |
-| **Pepperoni** | Pomodoro Mutti, Mozzarella Fior di Latte, Pepperoni selecto | `$11.990` | La más pedida |
-| **Napolitana** | Pomodoro Mutti, Mozzarella Fior di Latte, Orégano, Tomate fresco | `$10.990` | Receta original |
-| **Veggie** | Pomodoro Mutti, Mozzarella Fior di Latte, Champiñón, Pimentón verde, Cebolla | `$10.990` | Favorita vegetariana |
+| **Margherita** | Pomodoro Mutti, Mozzarella Fior di Latte, Albahaca fresca | `$9.990` | 🇮🇹 La clásica |
+| **Pepperoni** | Pomodoro Mutti, Mozzarella Fior di Latte, Pepperoni selecto | `$11.990` | ⭐ La más pedida |
+| **Napolitana** | Pomodoro Mutti, Mozzarella Fior di Latte, Orégano, Tomate fresco, Jamón | `$10.990` | 🔥 Favorita del Chef |
+| **Veggie** | Pomodoro Mutti, Mozzarella Fior di Latte, Champiñón, Pimentón verde, Cebolla | `$10.990` | 🌿 Favorita vegetariana |
 
 ---
 
