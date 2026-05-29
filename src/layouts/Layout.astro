@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Analytics from '../components/Analytics.astro';
 
 interface Props {
   title?: string;
@@ -71,6 +72,7 @@ const {
         "image": "https://domuspizzeria.cl/images/og-image.webp"
       }
     </script>
+    <Analytics />
   </head>
   <body class="bg-bg text-cream selection:bg-accent selection:text-bg overflow-x-hidden">
     <slot />

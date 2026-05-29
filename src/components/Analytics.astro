@@ -1,0 +1,45 @@
+---
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
+---
+
+{gaId && (
+  <>
+    <!-- Google Analytics 4 -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} is:inline></script>
+    <script define:vars={{ gaId }} is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+
+      // Track WhatsApp lead clicks
+      document.addEventListener('click', function (e) {
+        const btn = e.target.closest('[data-track-whatsapp]');
+        if (!btn) return;
+        gtag('event', 'generate_lead', {
+          method: 'whatsapp',
+          location: btn.dataset.trackWhatsapp,
+        });
+      });
+
+      // Track section visibility (fires once per section, at 40% visible)
+      const observed = new Set();
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !observed.has(entry.target.id)) {
+            observed.add(entry.target.id);
+            gtag('event', 'section_view', {
+              section_id: entry.target.id || entry.target.dataset.section,
+            });
+          }
+        });
+      }, { threshold: 0.4 });
+
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('[data-section], section[id]').forEach(function (el) {
+          observer.observe(el);
+        });
+      });
+    </script>
+  </>
+)}
